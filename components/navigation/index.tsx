@@ -1,8 +1,8 @@
 import React from 'react'
 import { INavigationProps } from './types'
 import Search from '../search'
-import { ExternalLink } from '../../external-link'
-import { YoutubeIcon } from '../../icons'
+import { ExternalLink } from '../external-link'
+import { YoutubeIcon } from '../icons'
 
 export default function Navigation({ onChange }: INavigationProps) {
   return (

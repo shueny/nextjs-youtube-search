@@ -1,6 +1,6 @@
 import React from 'react'
-import { ISearchProps } from './type'
-import { SearchIcon } from '../../icons'
+import { ISearchProps } from './types'
+import { SearchIcon } from '../icons'
 
 const Search = ({ onChange }: ISearchProps) => {
   return (
