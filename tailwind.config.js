@@ -43,7 +43,7 @@ module.exports = {
           10: '#e1ebfe',
         },
         gray: {
-          100: '#151515',
+          100: '#121212',
           90: '#212121',
           80: '#303030',
           70: '#424242',
@@ -76,6 +76,7 @@ module.exports = {
           secondary: 'rgba(0, 0, 0, .65)',
           tertiary: 'rgba(0, 0, 0, .54)',
           disabled: 'rgba(0, 0, 0, .30)',
+          base: '#0f0f0f',
         },
         shadow: '0px 20px 40px rgba(3, 3, 3, 0.2)',
         'red-trend': '#BD1C1A',
