@@ -1,10 +1,8 @@
-import React, { createRef, useEffect, useRef, useState } from 'react'
-import debounce from 'lodash.debounce'
+import React from 'react'
 import type { NextPage } from 'next'
 import { useAppContext } from './api/context'
 import Head from 'next/head'
 import Navigation from '../components/navigation'
-import { API } from './api/constant'
 import * as Layouts from '../components/layouts'
 import VideoList from '../components/video-list'
 import Lottie from 'react-lottie'
@@ -20,19 +18,7 @@ const defaultLottieOptions = {
 }
 
 const Home: NextPage = ({ props }: any) => {
-  const { loading, results, updateResults, setLoading } = useAppContext()
-
-  const handleChange = debounce(async (value, maxResults) => {
-    setLoading(true)
-    const url = `${API.YOUTUBE_SEARCH}search?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&type=video&part=snippet&maxResults=${maxResults}&q=${value}`
-
-    await fetch(url)
-      .then((res) => res.json())
-      .then((json) => {
-        updateResults(json)
-      })
-    setLoading(false)
-  }, 500)
+  const { loading, results } = useAppContext()
 
   return (
     <div className="w-full h-screen">
@@ -46,7 +32,7 @@ const Home: NextPage = ({ props }: any) => {
       </Head>
 
       <main className="w-full min-h-[calc(100%_-_40px)] bg-black-base">
-        <Navigation onChange={handleChange} />
+        <Navigation />
         <div className="pt-10 pb-20">
           {loading ? (
             <div className="w-full h-full flex items-center justify-center">

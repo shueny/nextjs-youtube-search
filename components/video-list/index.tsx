@@ -1,6 +1,5 @@
 import React from 'react'
 import { IVideoListProps } from './types'
-import { ExternalLink } from '../external-link'
 import VideoCard from '../video-card'
 import { IVideoCardProps } from '../video-card/types'
 
