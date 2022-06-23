@@ -16,7 +16,10 @@ const VideoCard = ({
 }: IVideoCardProps) => {
   const { medium } = thumbnails
   return (
-    <div className="w-full flex flex-wrap content-start" id="content-video">
+    <div
+      className="w-full flex flex-wrap content-start transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-white-disabled/[0.05] hover:shadow-lg duration-300 p-4 rounded-md"
+      id="content-video"
+    >
       <div className="w-full">
         <ExternalLink href="" className="flex object-center">
           <img
