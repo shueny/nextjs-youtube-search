@@ -1,6 +1,6 @@
 import {IVideoCardProps} from '../video-card/types';
 
-export interface IVideoListProps {
+export type IVideoListProps = {
 	results: {
 		items?: IVideoCardProps[] | null;
 		etag?: string | null;
@@ -11,4 +11,4 @@ export interface IVideoListProps {
 		};
 		regionCode?: string | null;
 	} | null;
-}
+};

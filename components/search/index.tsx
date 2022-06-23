@@ -8,7 +8,7 @@ const Search = ({ onChange }: ISearchProps) => {
       <label className="relative bg-black-emphasis group">
         <span className="sr-only">Search</span>
         <input
-          className="placeholder:text-slate-400 block bg-gray-100 w-full border border-gray-80 py-2 pr-9 pl-3 shadow-sm focus:outline-none focus:border-gray-50 focus:ring-gray-50 focus:ring-1 sm:text-sm"
+          className="placeholder:text-slate-400 block bg-gray-100 text-white-primary w-full border border-gray-80 py-2 pr-9 pl-3 shadow-sm focus:outline-none focus:border-gray-50 focus:ring-gray-50 focus:ring-1 sm:text-sm"
           placeholder="Search for anything..."
           type="text"
           name="search"

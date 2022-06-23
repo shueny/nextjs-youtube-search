@@ -1,26 +1,38 @@
-import React, { useCallback, useState } from 'react'
+import React, { createRef, useEffect, useRef, useState } from 'react'
 import debounce from 'lodash.debounce'
 import type { NextPage } from 'next'
+import { useAppContext } from './api/context'
 import Head from 'next/head'
 import Navigation from '../components/navigation'
 import { API } from './api/constant'
 import * as Layouts from '../components/layouts'
 import VideoList from '../components/video-list'
+import Lottie from 'react-lottie'
+import { LoadingIcon } from '../components/lotties'
 
-const Home: NextPage = ({ data }: any) => {
-  console.log('data:', data)
+const defaultLottieOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: LoadingIcon,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice',
+  },
+}
 
-  const [results, setResults] = useState(null)
+const Home: NextPage = ({ props }: any) => {
+  const { loading, results, updateResults, setLoading } = useAppContext()
 
-  const handleChange = debounce((value, maxResults) => {
+  const handleChange = debounce(async (value, maxResults) => {
+    setLoading(true)
     const url = `${API.YOUTUBE_SEARCH}search?key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}&type=video&part=snippet&maxResults=${maxResults}&q=${value}`
-    console.log(url, value, maxResults)
-    fetch(url)
-      .then((res) => res.json())
-      .then((json) => setResults(json))
-  }, 500)
 
-  console.log(results)
+    await fetch(url)
+      .then((res) => res.json())
+      .then((json) => {
+        updateResults(json)
+      })
+    setLoading(false)
+  }, 500)
 
   return (
     <div className="w-full h-screen">
@@ -36,7 +48,19 @@ const Home: NextPage = ({ data }: any) => {
       <main className="w-full min-h-[calc(100%_-_40px)] bg-black-base">
         <Navigation onChange={handleChange} />
         <div className="pt-10 pb-20">
-          <VideoList {...{ results }} />
+          {loading ? (
+            <div className="w-full h-full flex items-center justify-center">
+              <Lottie
+                options={defaultLottieOptions}
+                height={400}
+                width={400}
+                isStopped={false}
+                isPaused={false}
+              />
+            </div>
+          ) : (
+            <VideoList {...{ results }} />
+          )}
         </div>
       </main>
       <Layouts.Footer />
