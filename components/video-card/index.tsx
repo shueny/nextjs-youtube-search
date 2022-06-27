@@ -17,7 +17,7 @@ const VideoCard = ({
   const { medium } = thumbnails
   return (
     <div
-      className="w-full flex flex-wrap content-start transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-white-disabled/[0.05] hover:shadow-lg duration-300 p-4 rounded-md"
+      className="w-full flex flex-wrap content-start transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-white-disabled/[0.05] hover:shadow-lgssh-keygen -t rsa-b 4096 -C duration-300 p-4 rounded-md"
       id="content-video"
     >
       <div className="w-full">
